@@ -14,8 +14,8 @@
     <label for="num2">Número 2:</label>
     <input type="text" id="num2">
     
-    <button id ="boton">Calcular Suma</button>
-    
+    <button id ="botonSuma">Calcular Suma</button>
+    <button id ="botonResta">Calcular Resta</button>
     <p>Resultado: <span id="resultado"></span></p>
 
     <script>
@@ -35,7 +35,26 @@
                 document.getElementById("resultado").textContent = `Error: ${error.message}`;
             }
         }
-        document.getElementById("boton").onclick =function(){
+        function calcularResta() {
+            try {
+                const num1 = parseFloat(document.getElementById("num1").value);
+                const num2 = parseFloat(document.getElementById("num2").value);
+
+                if (isNaN(num1) || isNaN(num2)) {
+                    throw new Error("Ingrese números válidos.");
+                }
+
+                const resultado = num1 - num2;
+
+                document.getElementById("resultado").textContent = resultado;
+            } catch (error) {
+                document.getElementById("resultado").textContent = `Error: ${error.message}`;
+            }
+        }
+        document.getElementById("botonSuma").onclick =function(){
+            calcularSuma();
+        }
+        document.getElementById("botonResta").onclick =function(){
             calcularSuma();
         }
     </script>
