@@ -1,1 +1,43 @@
-{\rtf1}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Suma de dos números</h1>
+    
+    <label for="num1">Número 1:</label>
+    <input type="text" id="num1">
+    
+    <label for="num2">Número 2:</label>
+    <input type="text" id="num2">
+    
+    <button id ="boton">Calcular Suma</button>
+    
+    <p>Resultado: <span id="resultado"></span></p>
+
+    <script>
+        function calcularSuma() {
+            try {
+                const num1 = parseFloat(document.getElementById("num1").value);
+                const num2 = parseFloat(document.getElementById("num2").value);
+
+                if (isNaN(num1) || isNaN(num2)) {
+                    throw new Error("Ingrese números válidos.");
+                }
+
+                const resultado = num1 + num2;
+
+                document.getElementById("resultado").textContent = resultado;
+            } catch (error) {
+                document.getElementById("resultado").textContent = `Error: ${error.message}`;
+            }
+        }
+        document.getElementById("boton").onclick =function(){
+            calcularSuma();
+        }
+    </script>
+</body>
+</html>
